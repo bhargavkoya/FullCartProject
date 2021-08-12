@@ -1,0 +1,164 @@
+﻿@model IEnumerable<e_commerce.Models.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<head>
+    @if (TempData["ECart"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["ECart"]");
+            };
+        </script>
+    }
+    @if (TempData["FCart"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["FCart"]");
+            };
+        </script>
+    }
+    @if (TempData["HCart"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["HCart"]");
+            };
+        </script>
+    }
+    @if (TempData["CDelete"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["CDelete"]");
+            };
+        </script>
+    }
+</head>
+<body style="background-color:lavender">
+<div class="jumbotron table-responsive" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h3>Cart</h3>
+    <a class="btn btn-primary" asp-action="CustomerView" asp-controller="Login">CLICK To Add More</a>
+    @foreach (var item in Model)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>
+                        <img src="@item.productImage" style="width:300px; height:300px" class="card-img-top overflow-auto" alt="..." />
+                    </td>
+                    <td>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    User Name :
+                                </th>
+                                <td>
+                                    @item.Customer.FirstName @item.Customer.LastName
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Product Name :
+                                </th>
+                                <td>
+                                    @item.productName
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Price :
+                                </th>
+                                <td>
+                                    @item.Price
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Quantity :
+                                </th>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Description :
+                                </th>
+                                <td>
+                                    @item.Description
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Free Delivery :
+                                </th>
+                                <td>
+                                    @item.FreeDelivery
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Category :
+                                </th>
+                                <td>
+                                    @item.Category
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Brand :
+                                </th>
+                                <td>
+                                    @item.Brand
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">
+                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CartId">Delete</a>
+
+                                </th>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </thead>
+        </table>
+    }
+    <br />
+    <div class="container">
+        <table class="table table-hover">
+            <tr class="thead-dark">
+                <th colspan="2" style="font:bolder">Bill</th>
+            </tr>
+            <tr class="table-primary">
+                <td>Total Price</td>
+                <td>@Model.Sum(a => a.Price * a.Quantity)</td>
+            </tr>
+            <tr class="table-success">
+                <td>Discount Per Product</td>
+                <td>20%</td>
+            </tr>
+           
+            <tr class="table-danger" style="font:bolder">
+                <td>Total Price</td>
+                <td>@Model.Sum(a => (Convert.ToInt32(a.Price * a.Quantity) - Convert.ToInt32(a.Price * a.Quantity * 0.02)))</td>
+            </tr>
+
+        </table>
+    </div>
+    @*<h2 style="background-color:yellow;border:double">Total Price = @Model.Sum(a => a.Price * a.Quantity)</h2>*@
+    <br />
+    <a class="btn btn-primary" asp-action="Index" asp-controller="Addresses">
+        Proceed to Order <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+        </svg>
+    </a>
+
+</div>
+ </body>
+   

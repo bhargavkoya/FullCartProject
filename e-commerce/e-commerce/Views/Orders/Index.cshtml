@@ -1,0 +1,97 @@
+﻿@model IEnumerable<e_commerce.Models.Order>
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<head>
+    @if (TempData["PSucess"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["PSucess"]");
+            };
+        </script>
+    }
+</head>
+<div class="jumbotron container-fluid" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h2>Orders</h2>
+    <br />
+    <form asp-action="GetDate">
+        <table class="table">
+            <tr>
+                <th style="text-align:right"> <label for="SD" class="control-label">Start Date </label></th>
+                <td><input type="datetime" id="SD" name="SD" class="form-control" style="width:500px;" /></td>
+                <th style="text-align: right"><label for="ED" class="control-label">End Date </label></th>
+                <td><input type="datetime" id="ED" name="ED" class="form-control" style="width:500px;" /></td>
+                <td><input type="submit" value="Submit" class="btn btn-primary" /></td>
+            </tr>
+        </table>     
+        
+    </form>
+    
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfOrder)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentMode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfDelivery)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address.AddressLineone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfDelivery)
+                    </td>
+                    <td>
+
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                        @if (item.DateOfDelivery <= DateTime.Now)
+                        {
+                            <a class="btn btn-success" asp-action="GetOrderId" asp-controller="OrderReviews" asp-route-id="@item.OrderId">Add Review</a>
+                        }
+
+                    </td>
+                </tr>
+                    
+                }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-action="CustomerView" asp-controller="Login">Back To Home</a>
+</div>

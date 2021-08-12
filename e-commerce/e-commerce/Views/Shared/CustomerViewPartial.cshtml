@@ -1,0 +1,284 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FullCart: Shop Anything Here</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .navbar a {
+                float: left;
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+            .dropdown .dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+            .navbar a:hover, .dropdown:hover .dropbtn {
+                background-color: cornsilk;
+            }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+
+        footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            color: #FFFFFF;
+            background: #06303A;
+            font-size: 1.5em;
+            text-align: center;
+            line-height: 1000px;
+        }
+
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body style="background-color:white">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Login" asp-action="CustomerView">
+                    <span style="color:white">
+                        <img src="https://static.vecteezy.com/system/resources/previews/000/267/981/original/vector-shopping-cart-icon.jpg" style="background-color:black" class="img-circle" alt="New York" width="50" height="30">
+                        FULLCART
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-sm-end" id="colNav">
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item"><a asp-controller="Orders" asp-action="Index"> <i class="glyphicon glyphicon-list"></i>Orders</a></li>
+                        <li class="nav-item"><a asp-controller="Carts" asp-action="Index" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><sup style="background-color:red; color :white">@Context.Session.GetString("CartCount")</sup></a></li>
+                        <li class="nav-item"><a asp-controller="Login" asp-action="CMyAccount"><i class="glyphicon glyphicon-user"></i>My Account </a></li>
+                        <li class="nav-item"><a asp-controller="Login" asp-action="AdminLogOff">Sign Out <i class="glyphicon glyphicon-log-out"></i></a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+
+
+    <!-- Brands Section Start -->
+    <div class="brands-section section mb-90" style="padding-top:500px">
+        <div class="container">
+            <div class="row">
+
+                <!-- Brand Slider Start -->
+                <div class="brand-slider col">
+
+
+                </div><!-- Brand Slider End -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Brands Section End -->
+    <!-- Subscribe Section Start -->
+    <div class="subscribe-section section bg-gray pt-55 pb-55">
+        <div class="container">
+
+
+
+        </div>
+    </div>
+    <!-- Subscribe Section End -->
+    <!-- Footer Section Start -->
+    <div class="footer-section section bg-ivory">
+
+        <!-- Footer Top Section Start -->
+        <div class="footer-top-section section pt-90 pb-50 bg-dark" style="color:white">
+            <div class="container">
+
+
+                <div class="row">
+
+                    <!-- Footer Widget Start -->
+                    <div class="col-lg-3 col-md-6 col-12 mb-40" style="color:white">
+                        <div class="footer-widget">
+
+                            <h4 class="widget-title">CONTACT INFO</h4>
+
+                            <p class="contact-info">
+                                <span>Address</span>
+                                You address will be here <br>
+                                Lorem Ipsum text
+                            </p>
+
+                            <p class="contact-info">
+                                <span>Phone</span>
+                                <a href="tel:01234567890">01234 567 890</a>
+                                <a href="tel:01234567891">01234 567 891</a>
+                            </p>
+
+                            <p class="contact-info">
+                                <span>Web</span>
+                                <a href="mailto:info@example.com">info@example.com</a>
+                                <a href="#">www.example.com</a>
+                            </p>
+
+                        </div>
+                    </div><!-- Footer Widget End -->
+                    <!-- Footer Widget Start -->
+                    <div class="col-lg-3 col-md-6 col-12 mb-40">
+                        <div class="footer-widget">
+
+                            <h4 class="widget-title">CUSTOMER CARE</h4>
+
+                            <ul class="link-widget">
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Checkout</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">blog</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+
+                        </div>
+                    </div><!-- Footer Widget End -->
+                    <!-- Footer Widget Start -->
+                    <div class="col-lg-3 col-md-6 col-12 mb-40">
+                        <div class="footer-widget">
+
+                            <h4 class="widget-title">INFORMATION</h4>
+
+                            <ul class="link-widget">
+                                <li><a href="#">Track your order</a></li>
+                                <li><a href="#">Locate Store</a></li>
+                                <li><a href="#">Online Support</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Payment</a></li>
+                                <li><a href="#">Shipping & Returns</a></li>
+                                <li><a href="#">Gift coupon</a></li>
+                                <li><a href="#">Special coupon</a></li>
+                            </ul>
+
+                        </div>
+                    </div><!-- Footer Widget End -->
+                    <!-- Footer Widget Start -->
+                    <div class="col-lg-3 col-md-6 col-12 mb-40">
+                        <div class="footer-widget">
+
+                            <h4 class="widget-title">LATEST TWEET</h4>
+
+                            <div class="footer-tweet"></div>
+
+                        </div>
+                    </div><!-- Footer Widget End -->
+
+                </div>
+
+            </div>
+        </div><!-- Footer Bottom Section Start -->
+        <!-- Footer Bottom Section Start -->
+        <div class="footer-bottom-section section">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer Copyright -->
+                    <div class="col-lg-6 col-12">
+                        <div class="footer-copyright"><p>&copy; Copyright, 2018 All Rights Reserved by <a href="https://freethemescloud.com/">Free themes Cloud</a></p></div>
+                    </div>
+
+                    <!-- Footer Payment Support -->
+                    <div class="col-lg-6 col-12">
+                        <div class="footer-payments-image"><img src="~/assets/images/payment-support.png" alt="Payment Support Image"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- Footer Bottom Section Start -->
+
+    </div>
+    <!-- Footer Section End -->
+    <!-- JS
+    ============================================ -->
+    <!-- jQuery JS -->
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper JS -->
+    <script src="~/assets/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="~/assets/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

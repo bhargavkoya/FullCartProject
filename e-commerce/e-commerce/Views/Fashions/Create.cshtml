@@ -1,0 +1,104 @@
+﻿@model e_commerce.Models.Fashion
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/AdminViewPartial.cshtml";
+}
+<div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h2>Create</h2>
+
+    <h4>Fashion</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FName" class="control-label"></label>
+                    <input asp-for="FName" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="FName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FType" class="control-label"></label>
+                    <select asp-for="FType" asp-items="Html.GetEnumSelectList<FType>()" class="form-control" style="width:800px;"></select>
+                    <span asp-validation-for="FType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubCategory" class="control-label"></label>
+                    <select asp-for="SubCategory" asp-items="Html.GetEnumSelectList<Scategory>()" class="form-control" style="width:800px;"></select>
+                    <span asp-validation-for="SubCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantity" class="control-label"></label>
+                    <input asp-for="Quantity" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LaunchDate" class="control-label"></label>
+                    <input asp-for="LaunchDate" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="LaunchDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label"></label>
+                    <input asp-for="ImageFile" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FBrand" class="control-label"></label>
+                    <select asp-for="FBrand" asp-items="Html.GetEnumSelectList<FBrand>()" class="form-control" style="width:800px;"></select>
+                    <span asp-validation-for="FBrand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" style="width:800px;" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="FreeDelivery"/> @Html.DisplayNameFor(model => model.FreeDelivery)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Active"/> @Html.DisplayNameFor(model => model.Active)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+            @if (ViewBag.FCreate != null)
+            {
+                <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.FCreate");
+                        };
+                </script>
+            }
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" asp-action="AdminView" asp-controller="Login">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

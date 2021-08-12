@@ -1,0 +1,59 @@
+﻿@model e_commerce.Models.Admin
+<div class="container-fluid" style="background-color:lavender">
+    <div class="jumbotron" style="background-color:lavender">
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="height:30% ; background-color:white">
+                    <img src="https://th.bing.com/th/id/OIP.igX0vienXF-pxkGr-OEhrAHaHa?pid=ImgDet&rs=1" />
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="jumbotron" style="display:inline-block; background-color:white; border:initial ">
+                    <h1>Admin</h1>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Admin">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group">
+                                    <label asp-for="UserName" class="control-label"></label>
+                                    <input asp-for="UserName" class="form-control" style="width:500px;" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" style="width:500px;" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn btn-lg btn-outline-dark" style="color:olive; border-block-style:ridge" role="button" />
+                                </div>
+                            </form>
+                            @if (ViewBag.AMessage != null)
+                            {
+                                <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.AMessage");
+                        };
+                                </script>
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-lg btn-primary" asp-action="Index" asp-controller="Home">Back to Home</a>
+                    </div>
+
+                    @section Scripts {
+                        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                    }
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>

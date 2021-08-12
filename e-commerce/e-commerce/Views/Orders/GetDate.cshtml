@@ -1,0 +1,30 @@
+﻿@model e_commerce.ViewModel.DateData
+@{
+    ViewData["Title"] = "GetDate";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+
+<h3>Enter Date</h3>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Customer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" style="width:500px;" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" style="width:500px;" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
+                <input type="submit" value="Submit" class="btn btn-lg btn-outline-dark" style="color:olive; border-block-style:ridge" role="button" />
+            </div>
+        </form>
+    </div>
+</div>

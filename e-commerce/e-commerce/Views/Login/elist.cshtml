@@ -1,0 +1,85 @@
+﻿@model e_commerce.Models.ElectronicDevice
+
+@{
+    ViewData["Title"] = "elist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>elist</h2>
+
+<div>
+    <h4>ElectronicDevice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LaunchDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LaunchDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageFile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImageFile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EBrand)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EBrand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FreeDelivery)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FreeDelivery)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

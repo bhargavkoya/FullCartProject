@@ -1,0 +1,129 @@
+﻿@model e_commerce.Models.Payment
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "PaymentProcess";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container" style="background-color:lavender">
+    <div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+        <a class="btn btn-primary" asp-action="Index" asp-controller="Payments">Back To Payment Information</a>
+        <br />
+        <h2>PaymentProcess</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <form asp-action="PaymentProcess">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="CardNumber" class="control-label"></label>
+                                <input asp-for="CardNumber" class="form-control" required />
+                                <span asp-validation-for="CardNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" required />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="form-group col-md-6" id="captcha">
+                                    <input type="text" id="capt" readonly="readonly" />
+                                </div>
+                                <div id="refresh" class="form-group col-md-6">
+                                    <img src="https://img.icons8.com/ios-glyphs/30/000000/refresh--v2.png" onclick="cap()" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" id="textinput" name="textinput" class="form-control" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <button onclick="validcap()">Check</button>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Pay" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                    @if (ViewBag.InsufficientAmount != null)
+                    {
+                        <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.InsufficientAmount");
+                        };
+                        </script>
+                    }
+                    @if (ViewBag.InvalidCredentials != null)
+                    {
+                        <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.InvalidCredentials");
+                        };
+                        </script>
+                    }
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" style="background-color:lightseagreen">
+                        <h3>Items in Cart</h3>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.CartList)
+                                {
+                                    <tr>
+                                        <td>@item.productName</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Price</td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                        <span class="card bg-success text-dark">Total Price = @ViewBag.Amount </span>
+                    </div>
+                </div>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+            <script>
+                function cap() {
+                    var alpha = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+                    var a = alpha[Math.floor(Math.random() * 10)];
+                    var b = alpha[Math.floor(Math.random() * 10)];
+                    var c = alpha[Math.floor(Math.random() * 10)];
+                    var d = alpha[Math.floor(Math.random() * 10)];
+                    var e = alpha[Math.floor(Math.random() * 10)];
+                    var f = alpha[Math.floor(Math.random() * 10)];
+                    var sum = a + b + c + d + e + f;
+                    document.getElementById("capt").value = sum;
+                }
+                function validcap() {
+
+                    var string1 = document.getElementById("capt").value;
+                    var string2 = document.getElementById("textinput").value;
+                    if (string1 == string2) {
+
+                        alert("Capcha is validated successfully");
+                        return true;
+                    }
+                    else {
+
+                        alert("Please enter valid captcha");
+                        return false;
+                    }
+                }
+            </script>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model e_commerce.Models.Payment
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container" style="background-color:lavender">
+    <div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Payment</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CardNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CardNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CardHolderName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CardHolderName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Balance)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="PId" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a class="btn btn-primary" asp-action="Index">Back to Payment Information</a>
+            </form>
+        </div>
+    </div>
+    </div>

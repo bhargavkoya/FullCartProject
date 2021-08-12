@@ -1,0 +1,56 @@
+﻿@model IEnumerable<e_commerce.Models.Admin>
+@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "AMyAccount";
+    Layout = "~/Views/Shared/AdminViewPartial.cshtml";
+}
+<div class="container" style="background-color:lavender">
+    <a class="btn btn-primary" asp-action="AdminView" asp-controller="Login">Back To Home</a>
+    <br />
+
+    <h2>My Account</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.AdminAccountList)
+            {
+
+                <tr>
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.UserName
+                    </td>
+
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

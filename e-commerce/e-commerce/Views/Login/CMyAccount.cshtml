@@ -1,0 +1,57 @@
+﻿@model IEnumerable<e_commerce.Models.Customer>
+
+@{
+    ViewData["Title"] = "CMyAccount";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container-fluid" style="background-color:lavender">
+<h2>My Account</h2>
+<br />
+<a class="btn btn-primary" asp-action="CustomerView" asp-controller="Login">Back To Home</a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.Account1) {
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.UserName
+            </td>
+            
+            <td>
+                <a class="btn btn-info" asp-action="Edit" asp-controller="Customers" asp-route-id="@item.UserId">Edit</a> |
+                <a class="btn btn-primary" asp-action ="Details" asp-controller="Customers" asp-route-id="@item.UserId">Details</a> 
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>

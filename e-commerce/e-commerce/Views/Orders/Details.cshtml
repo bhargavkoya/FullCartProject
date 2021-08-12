@@ -1,0 +1,58 @@
+﻿@model e_commerce.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container-fluid" style="background-color:lavender">
+<div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address.AddressLineone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfOrder)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateOfOrder)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PaymentMode)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfDelivery)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateOfDelivery)
+            </dd>
+        </dl>
+    </div>
+    <div>
+       
+        <a class="btn btn-primary" asp-action="Index">Back to Orders</a>
+    </div>
+</div>
+</div>

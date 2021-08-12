@@ -1,0 +1,57 @@
+﻿@model e_commerce.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container" style="background-color:lavender">
+    <h2>Details</h2>
+
+    <div>
+        <h4>My Account</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Balance)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Balance)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
+        <a class="btn btn-primary" asp-action="CMyAccount" asp-controller="Login">Back to My Account</a>
+    </div>
+</div>

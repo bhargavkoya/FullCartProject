@@ -1,0 +1,94 @@
+﻿@model e_commerce.Models.Fashion
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/AdminViewPartial.cshtml";
+}
+<div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Fashion</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageFile)
+            </dt>
+            <dd class="col-sm-10">
+                <img src="@Html.DisplayFor(model => model.ImageFile)" style="height:200px; width:200px" class="card-img-top overflow-auto" alt="..." />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FType)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FType)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.SubCategory)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SubCategory)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LaunchDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LaunchDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FreeDelivery)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FreeDelivery)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FBrand)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FBrand)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.FId">Edit</a> |
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.FId">Delete</a> |
+        <a class="btn btn-primary" asp-action="AdminView" asp-controller="Login">Back to List</a>
+    </div>
+</div>

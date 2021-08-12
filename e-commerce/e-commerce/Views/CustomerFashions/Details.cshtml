@@ -1,0 +1,115 @@
+﻿@model e_commerce.Models.Fashion
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<head>
+    <style>
+        dt {
+            float: left;
+            clear: left;
+            width: 110px;
+            font-weight: bold;
+        }
+
+            dt::after {
+                content: ":";
+            }
+
+        dd {
+            margin: 0 0 0 80px;
+            padding: 0 0 0.5em 0;
+        }
+    </style>
+</head>
+<h2>Details</h2>
+
+<div>
+    <h4>Fashion</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="@Html.DisplayFor(model => model.ImageFile)" class="card-img-top overflow-auto" alt="..." />
+        </div>
+        <div class="col-sm-9">
+            <dl>
+               <dt>
+                    @Html.DisplayNameFor(model => model.FName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SubCategory)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SubCategory)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LaunchDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LaunchDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FreeDelivery)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FreeDelivery)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Rating)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FBrand)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FBrand)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+            <div>
+                <a asp-controller="Carts" asp-action="GetFashion" asp-route-id="@Model.FId" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a> |
+                <a class="btn btn-primary" asp-action="CustomerView" asp-controller="Login">Back to List</a>
+            </div>
+
+
+        </div>
+        
+    </div>
+    
+</div>

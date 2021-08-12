@@ -1,0 +1,50 @@
+﻿@model e_commerce.Models.Payment
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h2>Create</h2>
+
+    <h4>Payment</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="CardNumber" class="control-label"></label>
+                    <input asp-for="CardNumber" class="form-control" style="width:800px" />
+                    <span asp-validation-for="CardNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" style="width:800px"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CardHolderName" class="control-label"></label>
+                    <input asp-for="CardHolderName" class="form-control" style="width:800px"/>
+                    <span asp-validation-for="CardHolderName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Balance" class="control-label"></label>
+                    <input asp-for="Balance" class="form-control" style="width:800px"/>
+                    <span asp-validation-for="Balance" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" asp-action="Index">Back to Payment Information</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

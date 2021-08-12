@@ -1,0 +1,55 @@
+﻿@model IEnumerable<e_commerce.Models.ElectronicDevice>
+
+<p>
+    <a asp-controller="ElectronicDevices" asp-action="Create">Create New</a>
+</p>
+<div class="row overflow-auto">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3 overflow-auto">
+
+
+
+            <div class="card">
+
+
+                <a asp-controller="ElectronicDevices" asp-action="Details" asp-route-id="@item.EId"> <img src="@item.ImageFile" style="height:200px" class="card-img-top overflow-auto" alt="..." /></a>
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+
+                        <b>@item.EName</b>
+
+                        <span class="bg-success" style="color:white">
+
+                            @item.Rating
+
+                            <span class="glyphicon glyphicon-star"></span>
+
+                        </span>
+
+                    </h5>
+
+                    <h5 class="card-title">Rs @item.Price <s>Rs. 250 </s> 20% <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span></h5>
+
+                    <br>
+
+                    <p class="card-text">@item.Description</p>
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+            <br />
+
+        </div>
+
+    }
+</div>

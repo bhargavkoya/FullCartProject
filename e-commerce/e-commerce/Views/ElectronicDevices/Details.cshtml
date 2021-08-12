@@ -1,0 +1,89 @@
+﻿@model e_commerce.Models.ElectronicDevice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/AdminViewPartial.cshtml";
+
+}
+<div class="jumbotron" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+    <h1>Details</h1>
+
+    <div>
+        <h4>ElectronicDevice</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageFile)
+            </dt>
+            <dd class="col-sm-10">
+                <img src="@Html.DisplayFor(model => model.ImageFile)" style="height:200px; width:200px" class="card-img-top overflow-auto" alt="..." />
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LaunchDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LaunchDate)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EBrand)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EBrand)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FreeDelivery)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FreeDelivery)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.EId">Edit</a> |
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.EId">Delete</a> |
+        <a class="btn btn-primary" asp-action="AdminView" asp-controller="Login">Back to List</a>
+    </div>
+</div>

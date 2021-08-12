@@ -1,0 +1,59 @@
+﻿@model IEnumerable<e_commerce.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/CustomerViewPartial.cshtml";
+}
+<div class="container" style="background-color:lavender">
+    <div class="jumbotron container-fluid" style="display:inline-block; align-content:center; margin:auto; margin-block-start:1%; margin-inline-start:1%">
+        <a class="btn btn-primary" asp-action="Index" asp-controller="Addresses">Back To Address</a>
+        <br />
+        <h2>Payment</h2>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CardNumber)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.CardHolderName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Balance)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CardNumber)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CardHolderName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Balance)
+                        </td>
+                        <td>
+                            <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.PId">Edit</a> |
+
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" asp-action="PaymentProcess" asp-controller="Orders">
+            Proceed To Payment <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+            </svg>
+        </a>
+    </div>
+</div>
